@@ -1,19 +1,22 @@
+import os
 from flask import Flask, request, jsonify
 import mysql.connector
 from flask_cors import CORS
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 # Configurar la conexión con MySQL
 db = mysql.connector.connect(
-    host="localhost",       # Dirección del servidor MySQL (puede ser 'localhost' si es local)
-    # port="3306",            # Puerto de conexión a MySQL
-    user="root",      # Cambia esto por tu usuario de MySQL
-    password="root",  # Cambia esto por tu contraseña de MySQL
-    database="test" # Cambia esto por el nombre de tu base de datos
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD"),
+    database=os.getenv("DB_NAME")
 )
 
+#aca se crea la ruta para guardar los usuarios
 @app.route('/submit-form', methods=['POST'])
 def submit_form():
     data = request.json
@@ -29,7 +32,7 @@ def submit_form():
 
     return jsonify({"message": "Datos guardados en MySQL"}), 200
 
-
+# aca se crea la ruta para obtener los usuarios
 @app.route('/get-users', methods=['GET'])
 def get_users():
   cursor = db.cursor()
