@@ -26,7 +26,6 @@ form.addEventListener("submit", async (e) => {
     warnings += `La contraseña no es válida<br>`;
     entrar = true;
   }
-
   if (entrar) {
     parrafo.innerHTML = warnings;
   } else {
