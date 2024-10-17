@@ -53,7 +53,7 @@ form.addEventListener("submit", async (e) => {
         alert("Error al enviar el formulario");
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: ", error);
       alert("Error en la solicitud");
     }
   }

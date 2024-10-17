@@ -14,6 +14,7 @@
     <a href="/usuarios.html">Ver usuarios</a>
     <h1>Registro</h1>
     <form action="{{ url_for('registrarForm') }}" method="post" id="form">
+
       <label for="usuario">Usuario</label>
       <input type="text" id="usuario" name="usuario" />
 
@@ -25,6 +26,7 @@
 
       <button id="button" type="submit">Suscribirte</button>
       <p class="warnings" id="warnings"></p>
+
     </form>
   </div>
   <script src="script.js"></script>
